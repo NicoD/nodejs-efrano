@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Login</title>
+		<style>
+			label {
+				float: left;
+				width:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Login</h1>
+		<h2>get: {=fooget}</h2>
+		<fieldset>
+			<legend>login form</legend>
+			<form method="post" action="/login/">
+				<label for="login">login</label>
+				<input type="text" id="login" name="login" value="{=login}" />
+				<br />
+				<label for="password">password</label>
+				<input type="password" id="password" name="password" />
+				<input type="submit" value="login" />
+			</form>
+		</fieldset>
+	</body>
+</html>

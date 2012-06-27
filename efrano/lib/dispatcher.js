@@ -20,14 +20,13 @@
 'use strict';
 
 (function () {
-    var sys = require('sys'),
-        http = require('./http_state'),
+    var http = require('./http_state'),
         url = require('url'),
         path = require('path'),
         fs = require('fs'),
         mime = require('./mime'),
 		qs = require('querystring'),
-        _ = require('./underscore')._.noConflict();
+        _ = require('underscore');
 	
 	var controllerFactory = require('./controllerFactory');
 	var sessionHandler = require('./sessionHandler');
@@ -102,7 +101,7 @@
                 error_response(res, 404, options);
             }
         });
-    }
+    };
 
 
 
@@ -117,10 +116,10 @@
 			
 			req.getPost = function(data) {
 				return (req.post && req.post[data]) || null;
-			}
+			};
 			req.getGet = function(data) {
 				return (req.get && req.get[data]) || null;
-			}
+			};
 			
             handler = _(app).chain()
                 .map(function(entry) { 
@@ -134,7 +133,6 @@
 										}; })
                 .detect(function(handler) { return !!(handler.match); })
                 .value();
-
 
 						
 			if (handler && handler.match) {
@@ -161,18 +159,26 @@
 
 		function request_dynamic(handler, req, res) {
 
-			//try {
+			try {
+				var tmp = "";
 				if(!handler.controller || !handler.action) {
-					var tmp = url.parse(req.url).pathname.split('/');
-				}
+					tmp = url.parse(req.url).pathname.split('/');
+				} 
 				handler.controller = handler.controller || tmp.slice(0, tmp.length-2).join("/");
 				handler.action = handler.action || tmp[tmp.length-2];
+				
+				if(!handler.controller && !handler.action) {
+					error_response(res, 404, options);
+					return;
+				}
 				controllerFactory.create(options, handler.controller, handler.action, req, res, sessionHandler.create(req, res, options))();
+					
 
 				request_callback(handler, [req, res]);
-			//} catch (e) {
-			//	error_response(res, 501, options);
-			//}		
+			} catch (e) {
+				require("./logger").log(e);
+				error_response(res, 501, options);
+			}		
 		}
 		
 		function request_callback(handler, handler_args) {
@@ -195,7 +201,7 @@
 		}
 		
         return http.createServer(request_handler);
-    }
+    };
 
     exports.create = create;
 

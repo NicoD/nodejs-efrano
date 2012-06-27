@@ -24,8 +24,8 @@
 							status_code: status,
 							content: view.create().fileContent(path_view, tpl_file, datas, encoding)
 						});
-		}
-	}
+		};
+	};
 	
 	function create(path_view, tpl_file, datas, encoding, status) {
 		return new HtmlTemplate(path_view, tpl_file, datas, encoding, status);

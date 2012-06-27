@@ -26,14 +26,21 @@
 	 * @param http.IncomingMessage
 	 * @param http.ServerResponse
 	 * @param SessionHandler
+	 * @throws Error no action defined
 	 * @return function that run the controller
 	 */
 	exports.create = function(options, controller, action, req, res, sessionHandler) {
-		// retricte to only some ServerResponse methods
+
 		var resHandler = {respond: function(s){res.respond(s);}, set_cookie: function(name, value){res.set_cookie(name, value);}};			
+		
 		var fc = require(options.path_controller+'/'+controller).create(options, req, resHandler, sessionHandler);
 		
-		return function() { fc[action].apply(null); }
+		if(!fc[action]) {
+			throw new Error("undefined action \"" + action + "\" into controller \""+ controller + "\"");
+		}
+		return function() { 
+			fc[action].apply(null); 
+		};
 	};
 
 }());

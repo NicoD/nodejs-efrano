@@ -24,8 +24,8 @@
 							status_code: status,
 							content: buff
 						});			
-		}
-	}
+		};
+	};
 
 	exports.create = function(html, hasBody) {
 		return new HtmlRaw(html, hasBody);

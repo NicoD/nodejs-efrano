@@ -11,10 +11,10 @@
 							
 			}
 			rf.create(rf.RESPONSE_JSON, {}).run(res);
-		}
-	}
+		};
+	};
 	
 	exports.create = function(options, req, res, sessionHandler) {
 		return new Ajax(options, req, res, sessionHandler);
-	}
-}())
+	};
+}());

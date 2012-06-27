@@ -21,11 +21,11 @@
 							content: JSON.stringify(datas),
 							'Content-Type': 'application/json',							
 						});
-		}
-	}
+		};
+	};
 	
 	exports.create = function(datas, status) {
 		return new Json(datas, status);
-	}
+	};
 
 }());

@@ -30,7 +30,7 @@
 			var template = require("./normal-template").compile(String(fs.readFileSync(file, encoding)));
 			return template(datas);
 		};
-	}
+	};
 	
 	
 	exports.create = function create() {

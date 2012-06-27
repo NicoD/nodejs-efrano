@@ -34,4 +34,4 @@
 	//special views
 	exports.errorDocument = {404: 'e404',
 							 501: 'e501'};
-}())
+}());

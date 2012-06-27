@@ -17,7 +17,7 @@
  'use strict';
 	
 (function () {
-	var _ = require('./underscore')._.noConflict();
+	var _ = require('underscore');
 	
 
 	exports.NO_RESPONSE = 'null';
@@ -31,6 +31,6 @@
 	exports.create = function() {
 		var args = _.toArray(arguments);
 		return require('./response/'+args.shift()).create.apply(null, args);
-	}
+	};
 
 }());

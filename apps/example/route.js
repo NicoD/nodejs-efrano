@@ -29,11 +29,11 @@
 		{
 			'match': /^\/$/,
 			'controller': 'index',
-			'action': 'default'
+			'action': 'defaultAction'
 		},
 		
 		{'match': /(.*)$/},
 
 	];
 
-}())
+}());

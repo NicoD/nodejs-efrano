@@ -36,8 +36,8 @@
 				so.duration = options.session_duration;
 				
 			return req.get_or_create_session(req, res, so);
-		}
-	}
+		};
+	};
 	
 	exports.create = function(req, res, options) {
 		return new SessionHandler(req, res, options);

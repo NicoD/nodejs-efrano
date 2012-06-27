@@ -11,10 +11,10 @@
 				return;
 			}
 			rf.create(rf.RESPONSE_HTML_TPL, options.path_view, 'action-a1', {}, options.encoding).run(res);
-		}
-	}
+		};
+	};
 	
 	exports.create = function(options, req, res, sessionHandler) {
 		return new Action(options, req, res, sessionHandler);
-	}
-}())
+	};
+}());

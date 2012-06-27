@@ -30,8 +30,8 @@
 							status_code: status, 
 							headers: headers
 						});
-		}
-	}
+		};
+	};
 
 	exports.create = function(file) {
 		return new Redirect(file);

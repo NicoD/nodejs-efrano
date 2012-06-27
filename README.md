@@ -22,8 +22,8 @@ Efrano is initially build on Nerve project (https://github.com/gjritter/nerve) b
 
 It requires the following module to install using npm:
 
-- node-syslog (https://github.com/schamane/node-syslog)
-- elf-logger (https://github.com/TooTallNate/node-elf-logger); seems to have issues using Cygwin
+- underscore
+- node-syslog (https://github.com/schamane/node-syslog) not compatible with windows
 
 
 
@@ -36,7 +36,7 @@ You must specify the configuration module while launching the server
 
 node efrano.js <your-configuration-module>
 example:
-	node efrano.js apps/example/config
+	node efrano.js ../apps/myApp/config.js
 	
 
 ###Configuration file###
@@ -59,10 +59,6 @@ The configuration file contains the configuration for the server as for the appl
 		
 		//root of efrano
 		exports.efrano_root = exports.document_root+'efrano/';
-	
-		//libs of efrano
-		exports.efrano_libs = exports.efrano_root+'lib/';
-	
 		
 		//path of the controllers
 		exports.path_controller = exports.app_root+'controller';
